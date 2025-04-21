@@ -1,4 +1,3 @@
-
 export interface Certificate {
   id: string;
   recipientName: string;
@@ -10,6 +9,13 @@ export interface Certificate {
   status: 'active' | 'expired' | 'revoked';
   description?: string;
   achievements?: string[];
+  blockchainData?: {
+    index: number;
+    timestamp: string;
+    previousHash: string;
+    hash: string;
+    nonce: number;
+  };
 }
 
 // Mock data for frontend development
@@ -24,7 +30,14 @@ export const mockCertificates: Certificate[] = [
     certificateNumber: "TA-FS-2023-001",
     status: "active",
     description: "Completed 600 hours of intensive training in modern web development technologies.",
-    achievements: ["React", "Node.js", "MongoDB", "Express", "TypeScript"]
+    achievements: ["React", "Node.js", "MongoDB", "Express", "TypeScript"],
+    blockchainData: {
+      index: 1,
+      timestamp: "2023-06-15T10:30:00",
+      previousHash: "0000000000000000000000000000000000000000000000000000000000000000",
+      hash: "000abc123def456789...",
+      nonce: 3542
+    }
   },
   {
     id: "cert-5678-efgh-9012",
@@ -35,30 +48,32 @@ export const mockCertificates: Certificate[] = [
     certificateNumber: "DI-UX-2023-042",
     status: "active",
     description: "Mastered user-centered design principles and prototyping techniques.",
-    achievements: ["User Research", "Wireframing", "Figma", "Usability Testing"]
+    achievements: ["User Research", "Wireframing", "Figma", "Usability Testing"],
+    blockchainData: {
+      index: 2,
+      timestamp: "2023-04-10T14:20:00",
+      previousHash: "000abc123def456789...",
+      hash: "000def456789abc123...",
+      nonce: 2891
+    }
   },
   {
-    id: "cert-9012-ijkl-3456", 
-    recipientName: "Alex Johnson",
+    id: "cert-9012-ijkl-3456",
+    recipientName: "John Doe",
     issuerName: "Tech Academy",
-    courseName: "DevOps Engineering",
-    issueDate: "2022-11-20",
-    expiryDate: "2023-11-20",
-    certificateNumber: "TA-DO-2022-073",
-    status: "expired",
-    description: "Learned CI/CD pipelines and infrastructure automation.",
-    achievements: ["Docker", "Kubernetes", "Jenkins", "AWS"]
-  },
-  {
-    id: "cert-3456-mnop-7890",
-    recipientName: "Sarah Williams",
-    issuerName: "Cyber Security Institute",
-    courseName: "Ethical Hacking",
-    issueDate: "2023-01-05",
-    certificateNumber: "CSI-EH-2023-019",
-    status: "revoked",
-    description: "Comprehensive training in network security and penetration testing.",
-    achievements: ["Network Security", "Penetration Testing", "Security Auditing"]
+    courseName: "Blockchain Fundamentals",
+    issueDate: "2025-04-01",
+    certificateNumber: "EDU12345",
+    status: "active",
+    description: "Comprehensive understanding of blockchain technology and its applications.",
+    achievements: ["Blockchain", "Smart Contracts", "Cryptography"],
+    blockchainData: {
+      index: 2,
+      timestamp: "2025-04-08T12:45:00",
+      previousHash: "00a1b2c3...",
+      hash: "004acbd45f...",
+      nonce: 4871
+    }
   }
 ];
 

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { 
   Card, 
@@ -11,7 +10,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { Shield, Calendar, Award, Clock, FileCheck, X } from "lucide-react";
+import { Shield, Calendar, Award, Clock, FileCheck, X, Database } from "lucide-react";
 import { Certificate } from "../data/certificates";
 import { formatDate, getStatusBadgeClasses } from "../utils/verification";
 
@@ -118,6 +117,37 @@ const CertificateDisplay: React.FC<CertificateDisplayProps> = ({
                   <p className="text-sm text-muted-foreground">
                     {formatDate(certificate.expiryDate)}
                   </p>
+                </div>
+              </div>
+            )}
+            
+            {certificate.blockchainData && (
+              <div className="mt-6">
+                <h3 className="text-lg font-semibold mb-4 text-verify-blue flex items-center gap-2">
+                  <Database size={20} />
+                  Blockchain Data
+                </h3>
+                <div className="space-y-3 p-4 bg-blue-50 rounded-lg border border-blue-100">
+                  <div>
+                    <p className="text-sm text-muted-foreground">Block Index</p>
+                    <p className="font-mono">{certificate.blockchainData.index}</p>
+                  </div>
+                  <div>
+                    <p className="text-sm text-muted-foreground">Timestamp</p>
+                    <p className="font-mono">{new Date(certificate.blockchainData.timestamp).toLocaleString()}</p>
+                  </div>
+                  <div>
+                    <p className="text-sm text-muted-foreground">Previous Hash</p>
+                    <p className="font-mono text-xs truncate">{certificate.blockchainData.previousHash}</p>
+                  </div>
+                  <div>
+                    <p className="text-sm text-muted-foreground">Block Hash</p>
+                    <p className="font-mono text-xs truncate">{certificate.blockchainData.hash}</p>
+                  </div>
+                  <div>
+                    <p className="text-sm text-muted-foreground">Nonce</p>
+                    <p className="font-mono">{certificate.blockchainData.nonce}</p>
+                  </div>
                 </div>
               </div>
             )}
